@@ -7,7 +7,7 @@ import { GameProvider } from "./GameContext";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GameProvider>
-    <App />
-    <GameProvider>
-  </StrictMode>
+      <App />
+    </GameProvider>
+  </StrictMode>,
 );
