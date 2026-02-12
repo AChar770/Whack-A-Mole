@@ -22,3 +22,9 @@ function restartGame() {
     setScore(0);
     setMolePosition(Math.floor(Math.random() * 9));
 }
+
+return (
+    <GameContext.Provider value={{
+        score, molePosition, isPlaying, whackMole, startGame, restartGame
+    }}>{children}</GameContext.Provider>
+);
