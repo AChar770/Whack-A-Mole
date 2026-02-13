@@ -1,21 +1,16 @@
 import { useGame } from "./GameContext";
-import PlayArea from "./PlayArea";
-import Scoreboard from "./Scoreboard";
 import Intro from "./Intro";
+import PlayArea from "./PlayArea";
 
 export default function App() {
   const { isPlaying } = useGame();
-
-return (
+  
+  return (
     <>
-      <h1>Whack-a-Mole</h1>
-      {playing ? (
-        <>
-          <Scoreboard />
-          <PlayArea />
-        </>
+      {isPlaying ? (
+        <PlayArea />
       ) : (
-        <Intro/>
+        <Intro />
       )}
     </>
   );

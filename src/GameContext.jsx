@@ -1,10 +1,12 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useRef, useEffect } from "react";
 const GameContext = createContext();
 export function GameProvider({ children }) {
   const [score, setScore] = useState(0);
   const [molePosition, setMolePosition] = useState(2);
   const [isPlaying, setIsPlaying] = useState(false);
-}
+  const [timeLeft, setTimeLeft] = useState(15);
+  const timerRef = useRef(null);
+
 
 function whackMole() {
   setScore(score + 1);
@@ -29,6 +31,7 @@ return (
       score,
       molePosition,
       isPlaying,
+      timeLeft
       whackMole,
       startGame,
       restartGame,
@@ -37,6 +40,7 @@ return (
     {children}
   </GameContext.Provider>
 );
+}
 
 // reminder that instead of every component having to write useContext(GameContext), they can just write useGame() - custom hook
 
