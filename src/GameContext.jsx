@@ -31,6 +31,7 @@ function startGame() {
   setScore(0);
   setTimeLeft(15);
   setMolePosition(Math.floor(Math.random() * 9));
+}
 
 function restartGame() {
   setIsPlaying(false);
@@ -46,7 +47,7 @@ return (
       score,
       molePosition,
       isPlaying,
-      timeLeft
+      timeLeft,
       whackMole,
       startGame,
       restartGame,

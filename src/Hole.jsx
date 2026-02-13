@@ -1,7 +1,7 @@
 import { useGame } from "./GameContext";
 
 export default function Hole({ position }) {
-  const { molePosition, whackMole } = useGame();
+  const { molePosition, whackMole, timeLeft } = useGame();
   const hasMole = position === molePosition;
 
   return (
@@ -13,7 +13,7 @@ export default function Hole({ position }) {
         position: "relative",
         cursor: hasMole ? "pointer" : "default",
       }}
-      onClick={hasMole ? whackMole : null}
+      onClick={hasMole && timeLeft > 0 ? whackMole : null}
     >
       {hasMole && (
         <div
