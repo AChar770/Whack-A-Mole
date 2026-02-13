@@ -7,6 +7,19 @@ export function GameProvider({ children }) {
   const [timeLeft, setTimeLeft] = useState(15);
   const timerRef = useRef(null);
 
+  useEffect(() => {
+    if (isPlaying && timeLeft > 0) {
+      timerRef.current = setInterval(() => {
+      setTimeLeft((prevTime) => prevTime - 1);
+    }, 1000);
+  }
+
+  return () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+  };
+}, [isPlaying, timeLeft]);
 
 function whackMole() {
   setScore(score + 1);
@@ -16,14 +29,16 @@ function whackMole() {
 function startGame() {
   setIsPlaying(true);
   setScore(0);
+  setTimeLeft(15);
   setMolePosition(Math.floor(Math.random() * 9));
-}
 
 function restartGame() {
   setIsPlaying(false);
   setScore(0);
   setMolePosition(Math.floor(Math.random() * 9));
 }
+
+
 
 return (
   <GameContext.Provider

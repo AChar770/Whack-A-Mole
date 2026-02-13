@@ -2,13 +2,14 @@ import { useGame } from "./GameContext";
 import Hole from "./Hole";
 
 export default function PlayArea() {
-  const { score, restartGame } = useGame();
+  const { score, restartGame, timeLeft } = useGame();
 
   return (
     <div>
       <h1>Whack-A-Mole</h1>
       <div>
         <span>Score: {score}</span>
+        <span style={{ marginLeft: '1rem' }}>Time: {timeLeft}s</span>
         <button onClick={restartGame}>Restart</button>
       </div>
 
